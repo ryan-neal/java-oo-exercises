@@ -63,7 +63,6 @@ public class StudentAndCourseTest extends TestCase {
 		}
 
 	}
-
 	@Test
 	public void testSubmitGrade() {
 		Student s = new Student("D", "S", 1);
@@ -75,6 +74,7 @@ public class StudentAndCourseTest extends TestCase {
 			credits += c;
 			gpatotal += g * c;
 			s.submitGrade(g, c);
+			System.out.println(s.getGPA());
 			assertEquals("GPA computed incorrectly", gpatotal / credits, s.getGPA(), 0.01);
 			assertTrue("GPA not rounded", (s.getGPA() + "").length() < 6);
 		}
@@ -124,6 +124,7 @@ public class StudentAndCourseTest extends TestCase {
 		}
 	}
 
+	
 	@Test
 	public void testCreateLegacy() {
 		for(int i = 0; i < 100; i++) {
@@ -157,6 +158,7 @@ public class StudentAndCourseTest extends TestCase {
 		}
 	}
 
+	
 	@Test
 	public void testStudentToString() {
 		for (int i = 0; i < 100; i++) {
@@ -250,11 +252,11 @@ public class StudentAndCourseTest extends TestCase {
 			double a =  (Math.random() * 5000);
 			int c = (int)Math.random() * 500000;
 			Course cc = new Course("" + a, c, c);
+			System.out.println(cc.getName());
+			System.out.println(cc.getCredits());
+			System.out.println(cc.toString());
 			assertTrue("course toString does not contain course name", cc.toString().contains("" + a));
 			assertTrue("course toString does not contain credits", cc.toString().contains("" + c));
 		}
 	}
-
-
-
 }
