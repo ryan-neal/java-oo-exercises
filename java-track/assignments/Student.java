@@ -1,4 +1,5 @@
-package pset9;
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
 
 public class Student {
 	private String firstName;
@@ -63,8 +64,10 @@ public class Student {
 	}
 	
 	public double computeTuition() {
-		double x = Math.ceil(this.credits/15.0);
-		return (x * 20000);
+		double x = this.credits/15;
+		double y = this.credits % 15.0;
+		double answer = (x * 20000) + (y * (1333.33));
+		return answer;
 	}
 	
 	public Student createLegacy(Student student){
