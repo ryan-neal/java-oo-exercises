@@ -1,3 +1,4 @@
+package pset9;
 import org.junit.Test;
 
 import junit.framework.TestCase;
@@ -35,7 +36,7 @@ public class StudentAndCourseTest extends TestCase {
 			assertEquals(s5, "Freshman", s3.getClassStanding());
 		}
 	}
-
+	
 	@Test
 	public void testGetClassStanding() {
 		Student s = new Student("D", "S", 1);

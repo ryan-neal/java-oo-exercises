@@ -1,6 +1,4 @@
-import java.text.DecimalFormat;
-import java.text.NumberFormat;
-
+package pset9;
 public class Student {
 	private String firstName;
 	private String lastName;

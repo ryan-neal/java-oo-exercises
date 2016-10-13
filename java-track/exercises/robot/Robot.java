@@ -1,3 +1,4 @@
+package robot;
 
 public class Robot {
 	private int xPosition;
@@ -6,11 +7,11 @@ public class Robot {
 	private int orientation;
 	private int speed;
 	
-	public Robot(String name, int x, int y, int orientation, int speed){
+	public Robot(String name, int x, int y, int speed){
 		this.xPosition = x;
 		this.yPosition = y;
 		this.name = name;
-		this.orientation = orientation;
+		this.orientation = 0;
 		this.speed = speed;
 	}
 	
@@ -39,20 +40,20 @@ public class Robot {
 		System.out.println(answer);
 	}	
 	public void rotateRight(){
-		if (this.orientation < 270){
-			this.orientation += 90;
-		}
-		else{
-			this.orientation = 0;
-		}
-	}
-	
-	public void rotateLeft(){
-		if (this.orientation > 90){
+		if (this.orientation >= 90){
 			this.orientation -= 90;
 		}
 		else{
 			this.orientation = 270;
+		}
+	}
+	
+	public void rotateLeft(){
+		if (this.orientation < 270){
+				this.orientation += 90;
+		}
+		else{
+			this.orientation = 0;
 		}
 	}
 	
@@ -79,8 +80,8 @@ public class Robot {
 	}
 	
 	public static void main(String[] args){
-	Robot John = new Robot("John", 0, 0, 0, 1);
-	Robot Paul = new Robot("Paul", 1, 0, 0, 1);
+	Robot John = new Robot("John", 0, 0, 1);
+	Robot Paul = new Robot("Paul", 1, 0, 1);
 	Paul.move();
 	Paul.rotateRight();
 	Paul.move();
