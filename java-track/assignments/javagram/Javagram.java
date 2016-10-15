@@ -7,6 +7,24 @@ import java.util.Arrays;
 import java.util.Scanner;
 
 public class Javagram {
+	private static Scanner in;
+	
+	public static int startMenu(){
+		System.out.println("Please enter an intenger/n"
+			+ "1: Blue/n"
+			+ "2: Greyscale/n"
+			+ "3: Monchromatic/n"
+			+ "4: Black and White/n"
+			+ "5: Inverted/n"
+			+ "6: Brightness"
+			+ "7: Exit");
+		int selection = in.nextInt();
+		while (selection < 0 || selection > 7){
+			System.out.println("Invalid selection. Please enter another integer: ");
+			selection = in.nextInt();
+		}
+		return selection;
+	}
 
 	public static void main(String[] args) {
 
@@ -15,7 +33,6 @@ public class Javagram {
 		String dir = String.join(File.separator, baseParts);
 		String relPath;
 		Picture picture = null;
-		Scanner in = new Scanner(System.in);
 		
 		// prompt user for image to filter and validate input
 		do {
@@ -40,10 +57,16 @@ public class Javagram {
 		} while(picture == null);
 		
 		// TODO - prompt user for filter and validate input
-		
+		int number = 0;
+		try{
+			number = startMenu();
+		}
+		catch (NumberFormatException ex) {
+			System.out.println("Not a valid number!");
+			System.exit(0);
+		}
 		// TODO - pass filter ID int to getFilter, and get an instance of Filter back 
-		BlueFilter filter = getFilter();			
-
+		Filter filter = getFilter(number);			
 		// filter and display image
 		Picture processed = filter.process(picture);
 		processed.show();
@@ -71,7 +94,7 @@ public class Javagram {
 	
 	// TODO - refactor this method to accept an int parameter, and return an instance of the Filter interface
 	// TODO - refactor this method to thrown an exception if the int doesn't correspond to a filter
-	private static BlueFilter getFilter() {
+	private static Filter getFilter(int number) {
 		
 		// TODO - create some more filters, and add logic to return the appropriate one
 		return new BlueFilter();
