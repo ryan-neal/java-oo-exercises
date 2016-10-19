@@ -6,9 +6,10 @@ import java.io.File;
 import java.util.Arrays;
 import java.util.Scanner;
 
+
 public class Javagram {
 	private static Scanner in;
-	
+
 	public static int startMenu(){
 		System.out.println("Please enter an intenger/n"
 			+ "1: Blue/n"
@@ -45,9 +46,12 @@ public class Javagram {
 				System.out.println("Image path (relative to " + dir + "):");
 				relPath = in.next();
 				
+				/*
 				String[] relPathParts = relPath.split(File.separator);
 				imagePath = dir + File.separator + String.join(File.separator, Arrays.asList(relPathParts));
+				*/
 				
+				imagePath = (dir + "\\" + relPath);
 				picture = new Picture(imagePath);
 				
 			} catch (RuntimeException e) {
@@ -57,14 +61,8 @@ public class Javagram {
 		} while(picture == null);
 		
 		// TODO - prompt user for filter and validate input
-		int number = 0;
-		try{
-			number = startMenu();
-		}
-		catch (NumberFormatException ex) {
-			System.out.println("Not a valid number!");
-			System.exit(0);
-		}
+		int number = startMenu();
+		
 		// TODO - pass filter ID int to getFilter, and get an instance of Filter back 
 		Filter filter = getFilter(number);			
 		// filter and display image
@@ -97,8 +95,12 @@ public class Javagram {
 	private static Filter getFilter(int number) {
 		
 		// TODO - create some more filters, and add logic to return the appropriate one
-		return new BlueFilter();
-		
+		if (number == 1) {
+			return new BlueFilter();
+		}
+		else{
+			return null;
+		}
 	}
 
 }
