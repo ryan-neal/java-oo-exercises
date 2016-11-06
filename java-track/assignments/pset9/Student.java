@@ -1,4 +1,7 @@
 package pset9;
+
+import blogz.User;
+
 public class Student {
 	private String firstName;
 	private String lastName;
@@ -83,5 +86,22 @@ public class Student {
 	public String toString(){
 		return this.getName() + " " + this.ID;
 	}
+	
+//	public boolean equals(Object o){
+//		if (this == o){
+//			return true;
+//		}
+//		if (o == null){
+//			return false;
+//		}
+//		
+//		if (getClass() != o.getClass()){
+//			return false;
+//		
+//		}
+//
+//		Student stud = (Student) o;
+//		
+//		return s
 
 }
